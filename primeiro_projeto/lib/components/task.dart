@@ -56,6 +56,13 @@ class _TaskState extends State<Task> {
                       ),
                       width: 72,
                       height: 100,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
+                        child: Image.asset(
+                          widget.foto,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,

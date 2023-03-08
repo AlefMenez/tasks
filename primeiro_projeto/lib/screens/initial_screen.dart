@@ -28,7 +28,7 @@ class _InitialScreenState extends State<InitialScreen> {
             Task('Aprender Java','assets/images/java.jpg',  5),
             Task('Aprender PHP','assets/images/php.png', 5),
             Task('Aprender Ruby','assets/images/ruby.png', 5),
-            Task('Aprender Swift','assets/images/swift.png', 5),
+            Task('Aprender Swift','assets/images/swift.jpg', 5),
             SizedBox(
               height: 80,
             ),
