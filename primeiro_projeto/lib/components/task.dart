@@ -3,10 +3,10 @@ import 'package:refazendo_projeto/components/difficulty.dart';
 
 class Task extends StatefulWidget {
   final String nome;
-  
+  final String foto;
   final int dificuldade;
 
-  const Task(this.nome,  this.dificuldade, {Key? key}) : super(key: key);
+  const Task(this.nome,this.foto, this.dificuldade, {Key? key}) : super(key: key);
 
   @override
   State<Task> createState() => _TaskState();

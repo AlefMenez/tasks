@@ -23,12 +23,12 @@ class _InitialScreenState extends State<InitialScreen> {
         duration: const Duration(milliseconds: 500),
         child: ListView(
           children: const [
-            Task('Aprender Flutter', 3),
-            Task('Aprender Kotlin',  5),
-            Task('Aprender Java',  5),
-            Task('Aprender PHP',5),
-            Task('Aprender Ruby', 5),
-            Task('Aprender Swift', 5),
+            Task('Aprender Flutter','assets/images/flutter.jpg', 3),
+            Task('Aprender Kotlin','assets/images/kotlin.jfif',  5),
+            Task('Aprender Java','assets/images/java.jpg',  5),
+            Task('Aprender PHP','assets/images/php.png', 5),
+            Task('Aprender Ruby','assets/images/ruby.png', 5),
+            Task('Aprender Swift','assets/images/swift.png', 5),
             SizedBox(
               height: 80,
             ),
