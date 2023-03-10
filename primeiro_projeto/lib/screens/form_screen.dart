@@ -3,21 +3,38 @@ import 'package:flutter/rendering.dart';
 
 import '../data/task_inherited.dart';
 
-class formScreen extends StatefulWidget {
-  const formScreen({super.key, required this.taskContext});
+class FormScreen extends StatefulWidget {
+  const FormScreen({Key? key, required this.taskContext}) : super(key: key);
 
   final BuildContext taskContext;
 
   @override
-  State<formScreen> createState() => _FormState();
+  State<FormScreen> createState() => _FormState();
 }
 
-class _FormState extends State<formScreen> {
+class _FormState extends State<FormScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController difficultyController = TextEditingController();
   TextEditingController imageController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
+  bool valueValidator(String? value) {
+    if (value != null && value.isEmpty) {
+      return true;
+    }
+    return false;
+  }
+
+  bool difficultyValidator(String? value) {
+    if (value != null && value.isEmpty) {
+      if (int.parse(value) > 5 || int.parse(value) < 1) {
+        return true;
+      }
+      
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +62,7 @@ class _FormState extends State<formScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         validator: (String? value) {
-                          if (value != null && value.isEmpty) {
+                          if (valueValidator(value)) {
                             return 'enter a Name for the task';
                           }
                           return null;
@@ -64,9 +81,7 @@ class _FormState extends State<formScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         validator: (value) {
-                          if (value!.isEmpty ||
-                              int.parse(value) > 5 ||
-                              int.parse(value) < 1) {
+                          if (difficultyValidator(value)) {
                             return 'enter a difficulty between 1 and 5';
                           }
                           return null;
@@ -88,8 +103,8 @@ class _FormState extends State<formScreen> {
                         onChanged: (text) {
                           setState(() {});
                         },
-                        validator: (String? value) {
-                          if (value != null && value.isEmpty) {
+                        validator: (value) {
+                          if (valueValidator(value)) {
                             return 'enter a image URL';
                           }
                           return null;
