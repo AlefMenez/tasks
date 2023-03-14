@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:refazendo_projeto/components/task.dart';
+import 'package:refazendo_projeto/data/task_dao.dart';
 
 import '../data/task_inherited.dart';
 
@@ -31,7 +33,6 @@ class _FormState extends State<FormScreen> {
       if (int.parse(value) > 5 || int.parse(value) < 1) {
         return true;
       }
-      
     }
     return false;
   }
@@ -142,10 +143,15 @@ class _FormState extends State<FormScreen> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          TaskInherited.of(widget.taskContext).newTask(
+                          TaskDao().save(Task(
                               nameController.text,
                               imageController.text,
-                              int.parse(difficultyController.text));
+                              int.parse(difficultyController.text)));
+                          TaskInherited.of(widget.taskContext).newTask(
+                            nameController.text,
+                            imageController.text,
+                            int.parse(difficultyController.text),
+                          );
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Saving new task'),
