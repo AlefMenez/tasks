@@ -3,7 +3,7 @@ import 'package:refazendo_projeto/components/task.dart';
 import 'package:refazendo_projeto/data/task_dao.dart';
 import 'package:refazendo_projeto/screens/form_screen.dart';
 
-import '../data/task_inherited.dart';
+
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({Key? key}) : super(key: key);
@@ -21,12 +21,12 @@ class _InitialScreenState extends State<InitialScreen> {
         actions: [
           IconButton(onPressed: () {setState(() {
             
-          });}, icon: Icon(Icons.refresh))
+          });}, icon: const Icon(Icons.refresh))
         ],
         title: const Text('Tarefas'),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 8, bottom: 70),
+        padding: const EdgeInsets.only(top: 8, bottom: 70),
         child: FutureBuilder<List<Task>>(
             future: TaskDao().findAll(),
             builder: (context, snapshot) {
@@ -35,30 +35,29 @@ class _InitialScreenState extends State<InitialScreen> {
                 case ConnectionState.none:
                   return Center(
                       child: Column(
-                    children: [
+                    children: const [
                       CircularProgressIndicator(),
                       Text('Carregando'),
                     ],
                   ));
-                  break;
+                  
                 case ConnectionState.waiting:
                   return Center(
                       child: Column(
-                    children: [
+                    children: const [
                       CircularProgressIndicator(),
                       Text('Carregando'),
                     ],
                   ));
-                  break;
+                  
                 case ConnectionState.active:
                   return Center(
                       child: Column(
-                    children: [
+                    children: const [
                       CircularProgressIndicator(),
                       Text('Carregando'),
                     ],
                   ));
-                  break;
                 case ConnectionState.done:
                   if (snapshot.hasData && items != null) {
                     if (items.isNotEmpty) {
@@ -70,7 +69,7 @@ class _InitialScreenState extends State<InitialScreen> {
                           });
                     }
                     return Center(
-                      child: Column(children: [
+                      child: Column(children: const [
                         Icon(
                           Icons.error_outline,
                           size: 128,
@@ -84,11 +83,8 @@ class _InitialScreenState extends State<InitialScreen> {
                       ]),
                     );
                   }
-                  return Text('Erro ao carregar Tarefas');
-
-                  break;
+                  return const Text('Erro ao carregar Tarefas');
               }
-              return Text('Error desconhecido');
             }),
       ),
       floatingActionButton: FloatingActionButton(
