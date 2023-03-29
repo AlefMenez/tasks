@@ -6,6 +6,18 @@ ThemeData myTheme = ThemeData(
     primarySwatch: Colors.blueGrey,
   ).copyWith(
     secondary: Colors.blueGrey[300],
-    surface: Colors.blue,
+    surface: Colors.blueGrey[100],
+  ),
+  textTheme: const TextTheme(
+    displaySmall: TextStyle(
+      color: Colors.black,
+      fontSize: 24,
+      overflow: TextOverflow.ellipsis,
+    ),
+  ),
+  primaryTextTheme: const TextTheme(
+    labelLarge: TextStyle(
+      fontSize: 16,
+    ),
   ),
 );

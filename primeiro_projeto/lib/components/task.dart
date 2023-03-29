@@ -43,7 +43,7 @@ class _TaskState extends State<Task> {
         children: [
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4), color: Colors.blue),
+                borderRadius: BorderRadius.circular(4), color: Theme.of(context).primaryColor),
             height: 140,
           ),
           Column(
@@ -51,7 +51,7 @@ class _TaskState extends State<Task> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.surface,
                 ),
                 height: 100,
                 child: Row(
@@ -82,8 +82,7 @@ class _TaskState extends State<Task> {
                             width: 200,
                             child: Text(
                               widget.nome,
-                              style: const TextStyle(fontSize: 24),
-                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context).textTheme.displaySmall,
                             )),
                         Difficulty(
                           difficultyLevel: widget.dificuldade,
@@ -106,11 +105,11 @@ class _TaskState extends State<Task> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.end,
-                            children: const [
-                              Icon(Icons.arrow_drop_up),
+                            children: [
+                              const Icon(Icons.arrow_drop_up),
                               Text(
                                 "UP",
-                                style: TextStyle(fontSize: 12),
+                                style: Theme.of(context).primaryTextTheme.labelMedium,
                               )
                             ],
                           )),
@@ -128,7 +127,7 @@ class _TaskState extends State<Task> {
                       child: SizedBox(
                         width: 200,
                         child: LinearProgressIndicator(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.onPrimaryContainer,
                           value: (widget.dificuldade > 0)
                               ? (widget.nivel / widget.dificuldade) / 10
                               : 1,
@@ -139,10 +138,8 @@ class _TaskState extends State<Task> {
                       padding: const EdgeInsets.all(12),
                       child: Text(
                         'Nível: ${widget.nivel}',
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
+                        style: 
+                           Theme.of(context).primaryTextTheme.labelLarge,
                       ),
                     ),
                   ],
